@@ -1,0 +1,14 @@
+<% provide(:title, 'All suggestions') %>
+<h1>All suggestions</h1>
+
+<ul class="suggestions">
+  <% @suggestions.each do |suggestion| %>
+    <li>
+      <%= link_to suggestion.name, suggestion %>
+      <%= link_to suggestion.author, suggestion %>
+      <%= link_to suggestion.title, suggestion %>
+      <%= link_to "delete", suggestion, method: :delete,
+                                  data: { confirm: "You sure?" } %>
+    </li>
+  <% end %>
+</ul>

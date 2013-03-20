@@ -8,6 +8,9 @@ class StaticPagesController < ApplicationController
   def suggestions
   end
 
+  def new_suggestion
+  end
+
   def contact
   end
 end

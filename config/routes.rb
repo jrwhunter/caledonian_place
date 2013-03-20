@@ -1,9 +1,12 @@
 CaledonianPlace::Application.routes.draw do
 
+  resources :suggestions
+
   root to: 'static_pages#home'
   
   match '/past',   to: 'static_pages#past'
-  match '/suggestions',  to: 'static_pages#suggestions'
+  match '/suggestions',  to: 'suggestions#index'
+  match '/new_suggestion',  to: 'suggestions#new'
   match '/contact', to: 'static_pages#contact'  
 
 
