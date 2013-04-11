@@ -1,4 +1,12 @@
 <% provide(:title, 'New Suggestion') %>
+<style>
+p.padding
+{
+padding-top:50px;
+}
+</style>
+
+
 <h1>New Suggestion</h1>
 
 <div class="row">
@@ -15,7 +23,19 @@
       <%= f.label :title %>
       <%= f.text_field :title %>
 
-      <%= f.submit "Create your new suggestion", class: "btn btn-large btn-primary" %>
+      <%= f.label 'Choose:' %>
+
+      <%= f.radio_button :suggestion_type, 'book_group' %>
+      My suggestion is suitable for a book group discussion
+      <br>
+      
+
+      <%= f.radio_button :suggestion_type, 'read_only' %>
+      I just think others would like to read it
+
+      <p class="padding">Now submit your suggestion:
+      <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
+      </p>
     <% end %>
   </div>
 </div>

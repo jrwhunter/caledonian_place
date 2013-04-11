@@ -5,7 +5,8 @@ CaledonianPlace::Application.routes.draw do
   root to: 'static_pages#home'
   
   match '/past',   to: 'static_pages#past'
-  match '/suggestions',  to: 'suggestions#index'
+  match '/book_group_suggestions',  to: 'suggestions#book_group'
+  match '/read_only_suggestions',  to: 'suggestions#read_only'
   match '/new_suggestion',  to: 'suggestions#new'
   match '/contact', to: 'static_pages#contact'  
 

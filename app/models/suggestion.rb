@@ -11,10 +11,11 @@
 #
 
 class Suggestion < ActiveRecord::Base
-  attr_accessible :author, :name, :title
+  attr_accessible :author, :name, :title, :suggestion_type
 
   validates :name,  presence: true, length: { maximum: 50 }
   validates :author, presence: true
   validates :title, presence: true
+  validates :suggestion_type, presence: true
 
 end

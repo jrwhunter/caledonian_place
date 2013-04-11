@@ -11,14 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130319174039) do
+ActiveRecord::Schema.define(:version => 20130410195021) do
 
   create_table "suggestions", :force => true do |t|
     t.string   "name"
     t.string   "author"
     t.string   "title"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.string   "suggestion_type"
   end
 
 end

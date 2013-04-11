@@ -1,0 +1,18 @@
+<table class="table table-striped">  
+	<tr>
+		<td><b>PROPOSER</b></td>
+		<td><b>TITLE</b></td>
+		<td><b>AUTHOR</b></td>
+		<td></td>
+	</tr>
+
+	<% @suggestions.each do |suggestion| %>
+    <tr>
+      <td><%= suggestion.name %></td>
+      <td><%= suggestion.author %></td>
+      <td><%= suggestion.title %></td>
+      <td><%= link_to "delete", suggestion, method: :delete,
+                                  data: { confirm: "You sure?" } %></td>
+    </tr>
+  <% end %>
+</table>

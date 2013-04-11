@@ -7,24 +7,56 @@ class SuggestionsController < ApplicationController
     @suggestion = Suggestion.new(params[:suggestion])
     if @suggestion.save
       flash[:success] = "Suggestion saved"
-      # redirect_to @suggestion
-      @suggestions = Suggestion.all
-      render 'index'
+      if @suggestion.suggestion_type == "book_group"
+        @suggestions = get_suggestions('book_group')
+        render 'book_group'
+      else
+        @suggestions = get_suggestions('read_only')
+        render 'read_only'
+      end
     else
       render 'new'
     end
   end
 
+  def book_group
+    @suggestions = get_suggestions('book_group')
+  end
+
+  def read_only
+     @suggestions = get_suggestions('read_only')
+  end
+
   def index
-    @suggestions = Suggestion.all
+    @suggestions = get_suggestions(nil)
   end
 
   def destroy
-    Suggestion.find(params[:id]).destroy
+    s = Suggestion.find(params[:id])
+    s.destroy
     flash[:success] = "Suggestion removed."
     #redirect_to users_url
-    @suggestions = Suggestion.all
-    render 'index'
+    if s.suggestion_type == "book_group"
+      @suggestions = get_suggestions('book_group')
+      render 'book_group'
+    else
+      @suggestions = get_suggestions('read_only')
+      render 'read_only'
+    end
+  end
+
+  def get_suggestions(s_type)
+    if s_type == nil
+       return Suggestion.all
+    else
+      sug = []
+      Suggestion.all.each do |s|
+        if s.suggestion_type == s_type 
+          sug.push(s)
+        end
+      end
+      return sug
+    end
   end
 
 end

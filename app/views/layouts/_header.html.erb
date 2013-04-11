@@ -3,11 +3,12 @@
     <div class="container">
       <%= link_to "Caley Place Bookgroup", root_path, id: "logo" %>
       <nav>
-        <ul class="nav pull-right">
-          <li><%= link_to "Future meetings",    root_path %></li>
-          <li><%= link_to "Past meetings",    past_path %></li>
-          <li><%= link_to "Suggestions", suggestions_path %></li>
-          <li><%= link_to "New suggestion", new_suggestion_path %></li>
+         <ul class="nav pull-right">
+            <li><%= link_to "Future meetings",    root_path %></li>
+            <li><%= link_to "Past meetings",    past_path %></li>
+            <li><%= link_to "Book group suggestions", book_group_suggestions_path %>
+            <li><%= link_to "Reading suggestions", read_only_suggestions_path %></li>
+            <li><%= link_to "New suggestion", new_suggestion_path %></li>
         </ul>
       </nav>
     </div>
