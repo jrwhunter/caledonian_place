@@ -9,8 +9,8 @@
 	<% @suggestions.each do |suggestion| %>
     <tr>
       <td><%= suggestion.name %></td>
-      <td><%= suggestion.author %></td>
       <td><%= suggestion.title %></td>
+      <td><%= suggestion.author %></td>
       <td><%= link_to "delete", suggestion, method: :delete,
                                   data: { confirm: "You sure?" } %></td>
     </tr>
