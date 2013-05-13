@@ -1,0 +1,22 @@
+<table class="table table-striped">  
+	<tr>
+		<td><b>DATE</b></td>
+    <td><b>VENUE</b></td>
+		<td><b>TITLE</b></td>
+		<td><b>AUTHOR</b></td>
+		<td></td>
+    <td></td>
+	</tr>
+
+	<% @meetings.each do |meeting| %>
+    <tr>
+      <td><%= meeting.date.strftime("%A %d %B %Y")%></td>
+      <td><%= meeting.venue %></td>
+      <td><%= meeting.title %></td>
+      <td><%= meeting.author %></td>
+      <td><%= link_to "edit", edit_meeting_path(meeting.id)%></td>
+      <td><%= link_to "delete", meeting, method: :delete,
+                                  data: { confirm: "You sure?" } %></td>
+    </tr>
+  <% end %>
+</table>

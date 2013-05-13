@@ -1,4 +1,5 @@
 class SuggestionsController < ApplicationController
+
   def new
     @suggestion = Suggestion.new
   end
@@ -7,28 +8,18 @@ class SuggestionsController < ApplicationController
     @suggestion = Suggestion.new(params[:suggestion])
     if @suggestion.save
       flash[:success] = "Suggestion saved"
-      if @suggestion.suggestion_type == "book_group"
-        @suggestions = get_suggestions('book_group')
-        render 'book_group'
-      else
-        @suggestions = get_suggestions('read_only')
-        render 'read_only'
-      end
+      render_correct_list(@suggestion.suggestion_type)
     else
       render 'new'
     end
   end
 
   def book_group
-    @suggestions = get_suggestions('book_group')
+    render_correct_list('book_group')
   end
 
   def read_only
-     @suggestions = get_suggestions('read_only')
-  end
-
-  def index
-    @suggestions = get_suggestions(nil)
+     render_correct_list('read_only')
   end
 
   def destroy
@@ -36,12 +27,21 @@ class SuggestionsController < ApplicationController
     s.destroy
     flash[:success] = "Suggestion removed."
     #redirect_to users_url
-    if s.suggestion_type == "book_group"
-      @suggestions = get_suggestions('book_group')
-      render 'book_group'
+    render_correct_list(s.suggestion_type)
+  end
+
+  def edit
+    @suggestion = Suggestion.find(params[:id])
+    render 'edit'
+  end
+
+  def update
+    @suggestion = Suggestion.find(params[:id])
+    if @suggestion.update_attributes(params[:suggestion])
+      flash[:success] = "Suggestion updated"
+      render_correct_list(@suggestion.suggestion_type)
     else
-      @suggestions = get_suggestions('read_only')
-      render 'read_only'
+      render 'edit'
     end
   end
 
@@ -57,6 +57,16 @@ class SuggestionsController < ApplicationController
       end
       return sug
     end
+  end
+
+  def render_correct_list(s_type)
+    if s_type == "book_group"
+      @suggestions = get_suggestions('book_group')
+      render 'book_group'
+    else
+      @suggestions = get_suggestions('read_only')
+      render 'read_only'
+    end 
   end
 
 end

@@ -11,6 +11,8 @@
       <td><%= suggestion.name %></td>
       <td><%= suggestion.title %></td>
       <td><%= suggestion.author %></td>
+      <td><%= link_to "edit", edit_suggestion_path(suggestion.id)%></td>
+      <td><%= link_to "adopt", adopt_suggestion_path(:sugg => suggestion.id)%></td>
       <td><%= link_to "delete", suggestion, method: :delete,
                                   data: { confirm: "You sure?" } %></td>
     </tr>

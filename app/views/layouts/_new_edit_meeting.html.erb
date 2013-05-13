@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@meeting) do |f| %>
+      <% if @meeting.errors.any? %>
+        <div id="error_explanation">
+          <div class="alert alert-error">
+            The form contains <%= pluralize(@meeting.errors.count, "error") %>.
+          </div>
+          <ul>
+            <% @smeeting.errors.full_messages.each do |msg| %>
+              <li>* <%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+
+      <%= f.label :date %>
+      <% if !@meeting.nil? then val = @meeting.date end %>
+      <%= f.datepicker 'date', :dateFormat => "DD d MM yy", :defaultDate => val, :yearRange => "2010:2015" %>
+
+      <%= f.label :venue %>
+      <%= f.text_field :venue %>
+
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+
+      <%= f.label :author %>
+      <%= f.text_field :author %>
+
+      <p class="padding">Now save the meeting:
+      <%= f.submit "Save", class: "btn btn-large btn-primary" %>
+      </p>
+    <% end %>
+  </div>
+</div>
