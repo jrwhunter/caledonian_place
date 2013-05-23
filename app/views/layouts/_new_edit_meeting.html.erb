@@ -7,7 +7,7 @@
             The form contains <%= pluralize(@meeting.errors.count, "error") %>.
           </div>
           <ul>
-            <% @smeeting.errors.full_messages.each do |msg| %>
+            <% @meeting.errors.full_messages.each do |msg| %>
               <li>* <%= msg %></li>
             <% end %>
           </ul>
