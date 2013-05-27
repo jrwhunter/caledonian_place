@@ -1,9 +1,12 @@
 <% provide(:title, 'Future meetings') %>
 <h1>Future meetings</h1>
+<p>
+The Book Group meets approximately every six weeks at <strong>7.30 pm</strong>. The list of future meetings is shown below. All who live in the street are welcome to come along.
+</p>
 
 <%= render 'layouts/meeting_list' %>  
 
-<p>
-	<strong>http://caledonian-place.herokuapp.com</strong>
-</p>
-<%= image_tag("caley_place.jpg", :alt => "Caley Place", :size => "1000x200") %>	
+<%= image_tag("caley_place.jpg", :alt => "Caley Place", :size => "1000x150") %>	
+<h3>
+<%= link_to "Print handouts (two per page)", print_future_meetings_path, :target => '_blank' %>
+</h3>

@@ -2,7 +2,6 @@ CaledonianPlace::Application.routes.draw do
 
   resources :meetings
 
-
   resources :suggestions
 
   root to: 'meetings#future'
@@ -15,6 +14,7 @@ CaledonianPlace::Application.routes.draw do
   match '/read_only_suggestions',  to: 'suggestions#read_only'
   match '/new_suggestion',  to: 'suggestions#new'
   match '/contact', to: 'static_pages#contact'  
+  match '/print_future_meetings', to: 'meetings#print'
 
 
   # The priority is based upon order of creation:

@@ -16,14 +16,14 @@ class MeetingsController < ApplicationController
     @meeting = Meeting.new(params[:meeting])
     if @meeting.save
       flash[:success] = "Meeting saved"
-      if @meeting.date >=  DateTime.now
+      if @meeting.date >=  get_today
         @meetings = get_meetings('future')
         render 'future'
       else
         @meetings = get_meetings('past')
         render 'past'
       end
-   else
+    else
       render 'new'
     end
   end
@@ -41,7 +41,7 @@ class MeetingsController < ApplicationController
     m = Meeting.find(params[:id])
     m.destroy
     flash[:success] = "Meeting removed."
-    if m.date >=  DateTime.now
+    if m.date >=  get_today
       @meetings = get_meetings('future')
       render 'future'
     else
@@ -61,34 +61,42 @@ class MeetingsController < ApplicationController
     @meeting = Meeting.find(params[:id])
     if @meeting.update_attributes(params[:meeting])
       flash[:success] = "Meeting updated"
-      if @meeting.date >=  DateTime.now
+      if @meeting.date >=  get_today
         @meetings = get_meetings('future')
         render 'future'
       else
         @meetings = get_meetings('past')
         render 'past'
       end
-   else
+    else
       render 'edit'
     end
   end
 
 
+  def print
+    @meetings = get_meetings('future')
+    render 'print', :layout => false
+  end
+
+  private
+
   def get_meetings(m_type)
     if m_type == nil
-       return Meeting.all
+      return Meeting.all
     else 
       meet = []
-      if (m_type == "future") 
+      today = get_today
+      if m_type == "future" 
         Meeting.all.each do |m|
-          if m.date >=  DateTime.now
+          if m.date >=  today
             meet.push(m)
           end
         end
         meet.sort! {|a,b| a.date <=> b.date}
       else
         Meeting.all.each do |m|
-          if m.date <  DateTime.now
+          if m.date <  today
             meet.push(m)
           end
         end
@@ -96,6 +104,11 @@ class MeetingsController < ApplicationController
       end
       return meet
     end
+  end
+
+  def get_today
+    now = DateTime.now
+    return Date.new(now.year, now.month, now.day)
   end
 
 end

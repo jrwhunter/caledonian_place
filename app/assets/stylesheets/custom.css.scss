@@ -62,10 +62,23 @@ h2 {
   color: $grayLight;
 }
 
+h3 {
+  font-size: 1.1em;
+  letter-spacing: -1px;
+  margin-top: 20px;
+  font-weight: normal;
+  color: $grayLight;
+}
+
 p {
   font-size: 1.1em;
   line-height: 1.7em;
 }
+
+.right {
+  text-align: right;
+}
+
 /* header */
 
 #logo {

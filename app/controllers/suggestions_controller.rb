@@ -26,7 +26,6 @@ class SuggestionsController < ApplicationController
     s = Suggestion.find(params[:id])
     s.destroy
     flash[:success] = "Suggestion removed."
-    #redirect_to users_url
     render_correct_list(s.suggestion_type)
   end
 
@@ -44,6 +43,8 @@ class SuggestionsController < ApplicationController
       render 'edit'
     end
   end
+
+  private
 
   def get_suggestions(s_type)
     if s_type == nil

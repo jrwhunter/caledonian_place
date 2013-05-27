@@ -1,0 +1,28 @@
+<h1>Caledonian Place Book Group</h1>
+
+<p>
+The Book Group meets approximately every six weeks at <strong>7.30 pm</strong>. The list of future meetings is shown below. All who live in the street are welcome to come along.
+</p>
+
+<table class="table table-striped">  
+	<tr>
+		<td><b>DATE</b></td>
+    <td><b>VENUE</b></td>
+		<td><b>TITLE</b></td>
+		<td><b>AUTHOR</b></td>
+		<td></td>
+    <td></td>
+	</tr>
+
+	<% @meetings.each do |meeting| %>
+    <tr>
+      <td><%= meeting.date.strftime("%A %d %B %Y")%></td>
+      <td><%= meeting.venue %></td>
+      <td><%= meeting.title %></td>
+      <td><%= meeting.author %></td>
+    </tr>
+  <% end %>
+</table>
+<p>
+More information can be found at <strong>http://caledonian-place.herokuapp.com</strong>
+</p>
