@@ -1,5 +1,7 @@
 CaledonianPlace::Application.routes.draw do
 
+  resources :postings
+  
   resources :meetings
 
   resources :suggestions
@@ -15,6 +17,8 @@ CaledonianPlace::Application.routes.draw do
   match '/new_suggestion',  to: 'suggestions#new'
   match '/contact', to: 'static_pages#contact'  
   match '/print_future_meetings', to: 'meetings#print'
+  match '/postings',  to: 'postings#index'
+  match '/new_posting',  to: 'postings#new'
 
 
   # The priority is based upon order of creation:

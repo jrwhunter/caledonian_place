@@ -12,7 +12,13 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require twitter/bootstrap
 //= require jquery-ui
+//= require bootstrap-transition
+//= require bootstrap-alert
+//= require bootstrap-modal
+//= require bootstrap-button
+//= require bootstrap-collapse
 //= require_tree .
 
 function printpage()
