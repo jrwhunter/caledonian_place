@@ -11,6 +11,7 @@ CaledonianPlace::Application.routes.draw do
   match '/future_meetings' => 'meetings#future'
   match '/past_meetings' => 'meetings#past'
   match '/new_meeting',  to: 'meetings#new'
+  match '/running_meetings',  to: 'meetings#running'
   match '/adopt_suggestion',  to: 'meetings#adopt'
   match '/book_group_suggestions',  to: 'suggestions#book_group'
   match '/read_only_suggestions',  to: 'suggestions#read_only'
