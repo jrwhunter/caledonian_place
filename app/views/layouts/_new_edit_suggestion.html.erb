@@ -1,30 +1,42 @@
+<script>
+function inform(){
+alert("You have activated me by clicking the grey button! Note that the event handler is added within the event that it handles, in this case, the form button event tag")
+}
+</script>
+
 <div class="row">
   <div class="span6 offset3">
     <%= form_for(@suggestion) do |f| %>
+
       <%= render(:partial => "shared/error_messages", :object => @suggestion) %>
-
-      Your name
-      <%= f.text_field :name %>
-
-      <%= f.label :title %>
-      <%= f.text_field :title %>
-
-      <%= f.label :author %>
-      <%= f.text_field :author %>
 
       <%= f.label 'Choose:' %>
 
       <%= f.radio_button :suggestion_type, 'book_group' %>
-      My suggestion is likely to promote discussion at the book group.
+      My book suggestion is likely to promote discussion at the group.
       <br>
-      
-
       <%= f.radio_button :suggestion_type, 'read_only' %>
-      I just think others would like to read it.
+      I just think others would like to read this book.
+      <br>
+      <input id="suggestion_suggestion_type_theme" name="suggestion[suggestion_type]" type="radio" value="theme" onclick = "document.getElementById('suggestion_author').value = 'THEME'"/>
+      This is a suggestion for a theme.
+      <br>
+      <br>
+      Your name
+      <%= f.text_field :name %>
+
+      <%= f.label :author %>
+      <%= f.text_field :author %>
+
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+
+      
 
       <p class="padding">Now submit your suggestion:
       <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
       </p>
+
     <% end %>
   </div>
 </div>

@@ -15,6 +15,7 @@ CaledonianPlace::Application.routes.draw do
   match '/adopt_suggestion',  to: 'meetings#adopt'
   match '/book_group_suggestions',  to: 'suggestions#book_group'
   match '/read_only_suggestions',  to: 'suggestions#read_only'
+  match '/theme_suggestions',  to: 'suggestions#theme'
   match '/new_suggestion',  to: 'suggestions#new'
   match '/contact', to: 'static_pages#contact'  
   match '/print_future_meetings', to: 'meetings#print'

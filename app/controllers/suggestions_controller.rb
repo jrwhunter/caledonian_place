@@ -22,6 +22,10 @@ class SuggestionsController < ApplicationController
      render_correct_list('read_only')
   end
 
+  def theme
+     render_correct_list('theme')
+  end
+
   def destroy
     s = Suggestion.find(params[:id])
     s.destroy
@@ -64,9 +68,12 @@ class SuggestionsController < ApplicationController
     if s_type == "book_group"
       @suggestions = get_suggestions('book_group')
       render 'book_group'
-    else
+    elsif s_type == "read_only"
       @suggestions = get_suggestions('read_only')
       render 'read_only'
+    else
+      @suggestions = get_suggestions('theme')
+      render 'theme'
     end 
   end
 
