@@ -18,7 +18,7 @@ alert("You have activated me by clicking the grey button! Note that the event ha
       <%= f.radio_button :suggestion_type, 'read_only' %>
       I just think others would like to read this book.
       <br>
-      <input id="suggestion_suggestion_type_theme" name="suggestion[suggestion_type]" type="radio" value="theme" onclick = "document.getElementById('suggestion_author').value = 'THEME'"/>
+      <%= f.radio_button :suggestion_type, 'theme', onclick: "document.getElementById('suggestion_author').value = 'THEME'" %>
       This is a suggestion for a theme.
       <br>
       <br>
