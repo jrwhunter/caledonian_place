@@ -21,6 +21,7 @@ CaledonianPlace::Application.routes.draw do
   match '/print_future_meetings', to: 'meetings#print'
   match '/postings',  to: 'postings#index'
   match '/new_posting',  to: 'postings#new'
+  match '/christmas', to: 'static_pages#christmas_theme'
 
 
   # The priority is based upon order of creation:
